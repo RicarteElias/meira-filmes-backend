@@ -19,7 +19,7 @@ public class EmailService {
 
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo("ricarte.elias@outlook.com");
-         msg.setSubject("Recuperar codigo");
+        msg.setSubject("Recuperar codigo");
         msg.setText("Opa recuperar o codigo aqui ne pela aplicação que eu acabei de criar");
         javaMailSender.send(msg);
 
