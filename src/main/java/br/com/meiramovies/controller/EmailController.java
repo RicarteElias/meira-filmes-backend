@@ -20,7 +20,8 @@ public class EmailController {
 
 
     @GetMapping("{to}/{body}")
-    public void enviarEmail(@PathVariable String to, @PathVariable String body) {
+    public String enviarEmail(@PathVariable String to, @PathVariable String body) {
         emailService.enviarEmail(to,body);
+        return "Confira sua caixa de mensagens";
     }
 }
