@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "usuario", produces = "application/json")
+@RequestMapping(value = "nota", produces = "application/json")
 public class NotaController {
     private NotaRepository notaRepository;
 
