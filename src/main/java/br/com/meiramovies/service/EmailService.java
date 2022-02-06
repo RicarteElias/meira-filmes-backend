@@ -25,4 +25,13 @@ public class EmailService {
 
     }
 
+    public void enviarEmail(String to, String body) {
+
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(to);
+        msg.setSubject("Email do meiramovies");
+        msg.setText(body);
+        javaMailSender.send(msg);
+    }
+
 }
