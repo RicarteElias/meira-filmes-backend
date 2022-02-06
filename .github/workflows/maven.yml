@@ -1,0 +1,19 @@
+name: Meira Movies Deploy
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setting Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+      - name: Build With MAven
+        run: mvn --batch-mode --update-snapshots veirfy
+
+
+
