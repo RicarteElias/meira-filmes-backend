@@ -18,7 +18,6 @@ public class EmailController {
         this.emailService = emailService;
     }
 
-
     @GetMapping("{to}/{body}")
     public String enviarEmail(@PathVariable String to, @PathVariable String body) {
         emailService.enviarEmail(to,body);

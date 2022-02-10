@@ -1,13 +1,12 @@
 package br.com.meiramovies.model.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class UsuarioDto {
+    private Integer id;
     private String nome;
     private String usuario;
     private String senha;
-
+    private String email;
 }
