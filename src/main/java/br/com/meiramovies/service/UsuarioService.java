@@ -28,4 +28,8 @@ public class UsuarioService {
         return usuarioMapper.toDTO(usuarioRepository.findById(id).orElseGet(Usuario::new));
     }
 
+    public void editar(UsuarioDto usuarioDto) {
+        usuarioRepository.findById(usuarioDto.getId()).orElseGet(Usuario::new);
+    }
+
 }
