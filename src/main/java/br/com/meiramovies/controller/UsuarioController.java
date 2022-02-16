@@ -23,8 +23,9 @@ public class UsuarioController {
     }
 
     @PostMapping("/editar")
-    public void editar(@RequestBody UsuarioDto usuario) {
+    public String editar(@RequestBody UsuarioDto usuario) {
         usuarioService.editar(usuario);
+        return "Cadastro realizado com sucesso!";
     }
 
     @GetMapping(value = ("{id}"))
