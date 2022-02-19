@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Status {
+public class StatusController {
     @GetMapping
-    String statusServer(){
-        return "Server is ok!";
+    String statusServer() {
+        return "Server is UP!";
     }
 }
