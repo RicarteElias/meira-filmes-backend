@@ -27,9 +27,8 @@ public class UsuarioController {
     }
 
     @PostMapping()
-    public String salvar(@RequestBody UsuarioDto usuario) {
+    public void salvar(@RequestBody UsuarioDto usuario) {
         usuarioService.salvar(usuario);
-        return "Cadastro realizado com sucesso!";
     }
 
     @PostMapping("/editar")
