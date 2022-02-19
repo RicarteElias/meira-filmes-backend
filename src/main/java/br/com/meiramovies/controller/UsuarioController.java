@@ -1,8 +1,11 @@
 package br.com.meiramovies.controller;
 
+import br.com.meiramovies.exceptions.NegocioException;
+import br.com.meiramovies.model.dto.LoginRequestDTO;
 import br.com.meiramovies.model.dto.UsuarioDto;
 import br.com.meiramovies.service.EmailService;
 import br.com.meiramovies.service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,20 +15,27 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
     private final EmailService emailService;
 
+    @Autowired
     public UsuarioController(UsuarioService usuarioService, EmailService emailService) {
         this.usuarioService = usuarioService;
         this.emailService = emailService;
     }
 
+    @PostMapping("login")
+    public UsuarioDto login(@RequestBody LoginRequestDTO requestDTO) throws NegocioException {
+        return usuarioService.logar(requestDTO);
+    }
+
     @PostMapping()
-    public void salvar(@RequestBody UsuarioDto usuario) {
+    public String salvar(@RequestBody UsuarioDto usuario) {
         usuarioService.salvar(usuario);
+        return "Cadastro realizado com sucesso!";
     }
 
     @PostMapping("/editar")
     public String editar(@RequestBody UsuarioDto usuario) {
         usuarioService.editar(usuario);
-        return "Cadastro realizado com sucesso!";
+        return "Cadastro alterado com sucesso!";
     }
 
     @GetMapping(value = ("{id}"))

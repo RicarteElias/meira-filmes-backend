@@ -1,11 +1,15 @@
 package br.com.meiramovies.service;
 
+import br.com.meiramovies.exceptions.NegocioException;
+import br.com.meiramovies.model.dto.LoginRequestDTO;
 import br.com.meiramovies.model.dto.UsuarioDto;
 import br.com.meiramovies.model.entity.Usuario;
 import br.com.meiramovies.model.mapper.UsuarioMapper;
 import br.com.meiramovies.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service
 public class UsuarioService {
@@ -30,6 +34,16 @@ public class UsuarioService {
 
     public void editar(UsuarioDto usuarioDto) {
         usuarioRepository.findById(usuarioDto.getId()).orElseGet(Usuario::new);
+    }
+
+    public UsuarioDto logar(LoginRequestDTO requestDTO) throws NegocioException {
+        Usuario u = usuarioRepository.findUsuarioByEmail(requestDTO.getEmail());
+        if (Objects.isNull(u)) {
+            throw new NegocioException("Usuario não encontrado!");
+        } else if (!u.getSenha().equals(requestDTO.getSenha())) {
+            throw new NegocioException("Senha incorreta!");
+        }
+        return usuarioMapper.toDTO(u);
     }
 
 }
