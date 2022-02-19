@@ -1,20 +1,29 @@
 package br.com.meiramovies.controller;
 
+import br.com.meiramovies.model.dto.NotaDto;
+import br.com.meiramovies.model.dto.SalvarNotaDto;
 import br.com.meiramovies.model.entity.Nota;
 import br.com.meiramovies.repository.NotaRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import br.com.meiramovies.service.NotaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "nota", produces = "application/json")
 public class NotaController {
-    private NotaRepository notaRepository;
-
-    @GetMapping(value = ("{id}"))
-    public Nota buscar(@PathVariable int id) {
-        return notaRepository.findById(id).get();
+    private NotaService notaService;
+    @Autowired
+    public NotaController(NotaService notaService) {
+        this.notaService = notaService;
     }
+//    @GetMapping(value = ("{id}"))
+//    public Nota buscar(@PathVariable int id) {
+//        return notaRepository.findById(id).get();
+//    }
 
+    @PostMapping("salvar")
+    public String salvar(@RequestBody SalvarNotaDto nota) {
+        notaService.salvar(nota);
+        return "Salvou a nota!";
+    }
 }

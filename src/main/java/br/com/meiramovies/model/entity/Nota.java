@@ -27,7 +27,7 @@ public class Nota {
     private Long idFilme;
 
     @Column(name = "descricao", nullable = false, length = 255)
-    private String descricao;
+    private String comentario;
 
     @Column(name = "nota", nullable = false)
     private Integer nota;
