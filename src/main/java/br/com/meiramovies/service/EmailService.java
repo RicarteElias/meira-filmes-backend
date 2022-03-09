@@ -15,16 +15,6 @@ public class EmailService {
         this.javaMailSender = javaMailSender;
     }
 
-   public void sendEmail() {
-
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo("ricarte.elias@outlook.com");
-        msg.setSubject("Recuperar codigo");
-        msg.setText("Opa recuperar o codigo aqui ne pela aplicação que eu acabei de criar");
-        javaMailSender.send(msg);
-
-    }
-
     public void enviarEmail(String to, String body) {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(to);
@@ -32,5 +22,4 @@ public class EmailService {
         msg.setText(body);
         javaMailSender.send(msg);
     }
-
 }

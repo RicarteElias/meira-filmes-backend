@@ -18,7 +18,7 @@ public class NotaService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    public void salvar (SalvarNotaDto notaParam) {
+    public void salvar(SalvarNotaDto notaParam) {
         Nota nota = new Nota();
         nota.setNota(notaParam.getNota());
         nota.setComentario(notaParam.getComentario());
@@ -26,4 +26,6 @@ public class NotaService {
         nota.setIdFilme(notaParam.getIdFilme());
         notaRepository.save(nota);
     }
+
+
 }
