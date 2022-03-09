@@ -9,4 +9,5 @@ public class UsuarioDto {
     private String usuario;
     private String senha;
     private String email;
+    private String runtime;
 }
