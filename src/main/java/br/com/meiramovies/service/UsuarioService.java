@@ -41,9 +41,7 @@ public class UsuarioService {
     public UsuarioDto logar(LoginRequestDTO requestDTO) throws NegocioException {
         Usuario u = usuarioRepository.findUsuarioByEmail(requestDTO.getEmail());
         if (Objects.isNull(u)) {
-            throw new ResponseStatusException(
-                    HttpStatus.CONFLICT
-                    , "Usuário não encontrado");
+            throw new NegocioException("Usuário não encontrado!");
         } else if (!u.getSenha().equals(requestDTO.getSenha())) {
             throw new ResponseStatusException(
                     HttpStatus.UNAUTHORIZED
