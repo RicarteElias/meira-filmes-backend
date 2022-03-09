@@ -1,7 +1,10 @@
 package br.com.meiramovies.exceptions;
 
-public class NegocioException extends Exception {
-    public NegocioException(String message) {
-        super(message);
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
+public class NegocioException extends ResponseStatusException {
+    public NegocioException(String reason) {
+        super(HttpStatus.CONFLICT, reason, new Throwable(reason));
     }
 }
