@@ -7,7 +7,9 @@ import br.com.meiramovies.model.entity.Usuario;
 import br.com.meiramovies.model.mapper.UsuarioMapper;
 import br.com.meiramovies.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Objects;
 
@@ -39,9 +41,13 @@ public class UsuarioService {
     public UsuarioDto logar(LoginRequestDTO requestDTO) throws NegocioException {
         Usuario u = usuarioRepository.findUsuarioByEmail(requestDTO.getEmail());
         if (Objects.isNull(u)) {
-            throw new NegocioException("Usuario não encontrado!");
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT
+                    , "Usuário não encontrado");
         } else if (!u.getSenha().equals(requestDTO.getSenha())) {
-            throw new NegocioException("Senha incorreta!");
+            throw new ResponseStatusException(
+                    HttpStatus.UNAUTHORIZED
+                    , "Senha incorreta!");
         }
         return usuarioMapper.toDTO(u);
     }
