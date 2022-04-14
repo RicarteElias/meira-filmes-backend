@@ -3,11 +3,10 @@ package br.com.meiramovies.model.mapper;
 import br.com.meiramovies.model.dto.MeiraFilmeDto;
 import br.com.meiramovies.model.entity.MeiraFilme;
 import org.mapstruct.Mapper;
-import org.mapstruct.ReportingPolicy;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(componentModel = "spring")
 
-public interface SalvarMeiraFilmeMapper {
+public interface MeiraFilmeMapper {
 
     MeiraFilme meiraFilmeDtoToMeiraFilme(MeiraFilmeDto meiraFilmeDto);
 
