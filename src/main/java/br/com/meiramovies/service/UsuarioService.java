@@ -27,6 +27,10 @@ public class UsuarioService {
     }
 
     public void salvar(UsuarioDto usuarioDto) {
+        Usuario u = usuarioRepository.findUsuarioByEmail(usuarioDto.getEmail());
+        if (!Objects.isNull(u)) {
+            throw new NegocioException("Email já cadastrado no sistema!");
+        }
         usuarioRepository.save(usuarioMapper.toEntity(usuarioDto));
     }
 

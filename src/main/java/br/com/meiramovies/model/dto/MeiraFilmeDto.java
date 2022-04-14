@@ -1,19 +1,27 @@
 package br.com.meiramovies.model.dto;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+import java.time.LocalDate;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MeiraFilmeDto {
 
     private Integer id;
 
-    private Integer idPessoa;
-
-    private String releaseDate;
+    @JsonAlias("release_date")
+    private LocalDate releaseDate;
 
     private String title;
 
+    @JsonAlias("backdrop_path")
     private String backdropPath;
 
-    private String runtime;
 }

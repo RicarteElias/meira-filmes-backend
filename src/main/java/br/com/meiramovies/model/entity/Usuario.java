@@ -25,12 +25,9 @@ public class Usuario implements Serializable {
     private String nome;
 
     @Column(length = 50)
-    private String usuario;
-
-    @Column(length = 50)
     private String senha;
 
-    @Column(length = 50)
+    @Column(length = 100)
     private String email;
 
     public Usuario(String nome) {
