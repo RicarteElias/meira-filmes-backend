@@ -8,6 +8,8 @@ import br.com.meiramovies.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MeiraFilmeService {
 
@@ -26,5 +28,9 @@ public class MeiraFilmeService {
         MeiraFilme filme = meiraFilmeMapper.meiraFilmeDtoToMeiraFilme(filmeDto);
         filme.setUsuario(usuarioRepository.findById(id).get());
         meiraFilmeRepository.save(filme);
+    }
+
+    public List<MeiraFilmeDto> buscarFilmes() {
+        return meiraFilmeRepository.getAllDto();
     }
 }

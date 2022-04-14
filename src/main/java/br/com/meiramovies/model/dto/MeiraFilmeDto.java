@@ -16,6 +16,8 @@ public class MeiraFilmeDto {
 
     private Integer id;
 
+    private String usuarioNome;
+
     @JsonAlias("release_date")
     private LocalDate releaseDate;
 
@@ -23,5 +25,6 @@ public class MeiraFilmeDto {
 
     @JsonAlias("backdrop_path")
     private String backdropPath;
+    
 
 }
