@@ -1,5 +1,6 @@
 package br.com.meiramovies.service;
 
+import br.com.meiramovies.exceptions.NegocioException;
 import br.com.meiramovies.model.dto.MeiraFilmeDto;
 import br.com.meiramovies.model.entity.MeiraFilme;
 import br.com.meiramovies.model.mapper.MeiraFilmeMapper;
@@ -25,6 +26,9 @@ public class MeiraFilmeService {
     }
 
     public void salvarFilme(MeiraFilmeDto filmeDto, Integer id) {
+        if (meiraFilmeRepository.getIdsFilmeAdicionados(id).size() >= 3) {
+            throw new NegocioException("Você já adicionou filmes suficientes a lista!");
+        }
         MeiraFilme filme = meiraFilmeMapper.meiraFilmeDtoToMeiraFilme(filmeDto);
         filme.setUsuario(usuarioRepository.findById(id).get());
         meiraFilmeRepository.save(filme);
