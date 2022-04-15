@@ -32,4 +32,7 @@ public class MeiraFilme {
     @Column(name = "backdrop_path")
     private String backdropPath;
 
+    @Column(name = "assistido")
+    private boolean assistido;
+
 }
