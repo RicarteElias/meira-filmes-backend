@@ -1,9 +1,9 @@
-package br.com.meiramovies.model.dto;
+package br.com.meiramovies.model.request;
 
 import lombok.Data;
 
 @Data
-public class LoginRequestDTO {
+public class LoginRequest {
 
     private String senha;
     private String email;
