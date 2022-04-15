@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface MeiraFilmeRepository extends CrudRepository<MeiraFilme, Integer> {
 
-    @Query("SELECT new br.com.meiramovies.model.dto.MeiraFilmeDto(m.id, m.usuario.nome,m.releaseDate,m.title,m.backdropPath) FROM MeiraFilme m")
+    @Query("SELECT new br.com.meiramovies.model.dto.MeiraFilmeDto(m.id, m.usuario.id, m.usuario.nome, m.releaseDate,m.title,m.backdropPath) FROM MeiraFilme m")
     List<MeiraFilmeDto> getAllDto();
 
     @Query("SELECT m.id FROM MeiraFilme m WHERE m.usuario.id = ?1")
