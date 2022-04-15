@@ -1,10 +1,10 @@
 package br.com.meiramovies.service;
 
 import br.com.meiramovies.exceptions.NegocioException;
-import br.com.meiramovies.model.dto.FilterMeiraFilmeRequest;
 import br.com.meiramovies.model.dto.MeiraFilmeDto;
 import br.com.meiramovies.model.entity.MeiraFilme;
 import br.com.meiramovies.model.mapper.MeiraFilmeMapper;
+import br.com.meiramovies.model.request.FilterMeiraFilmeRequest;
 import br.com.meiramovies.repository.MeiraFilmeRepository;
 import br.com.meiramovies.repository.UsuarioRepository;
 import br.com.meiramovies.repository.jpaRepository.MeiraFilmeJpaRepository;
@@ -48,5 +48,13 @@ public class MeiraFilmeService {
 
     public List<MeiraFilme> buscarFilmesFiltro(FilterMeiraFilmeRequest filter) {
         return meiraFilmeJpaRepository.findAll(meiraFilmeSpecification.getMeiraFilmes(filter));
+    }
+
+    public void deletarFilme(Integer id) {
+        MeiraFilme filme = meiraFilmeRepository.findById(id).get();
+        if (filme.isAssistido()) {
+            throw new NegocioException("Você não pode remover um filme que já foi assistido dessa lista!");
+        }
+        meiraFilmeRepository.deleteById(id);
     }
 }

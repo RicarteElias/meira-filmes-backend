@@ -1,10 +1,10 @@
 package br.com.meiramovies.service;
 
 import br.com.meiramovies.exceptions.NegocioException;
-import br.com.meiramovies.model.dto.LoginRequestDTO;
 import br.com.meiramovies.model.dto.UsuarioDto;
 import br.com.meiramovies.model.entity.Usuario;
 import br.com.meiramovies.model.mapper.UsuarioMapper;
+import br.com.meiramovies.model.request.LoginRequest;
 import br.com.meiramovies.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,7 +42,7 @@ public class UsuarioService {
         usuarioRepository.findById(usuarioDto.getId()).orElseGet(Usuario::new);
     }
 
-    public UsuarioDto logar(LoginRequestDTO requestDTO) throws NegocioException {
+    public UsuarioDto logar(LoginRequest requestDTO) throws NegocioException {
         Usuario u = usuarioRepository.findUsuarioByEmail(requestDTO.getEmail());
         if (Objects.isNull(u)) {
             throw new NegocioException("Usuário não encontrado!");

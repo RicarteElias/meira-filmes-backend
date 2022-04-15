@@ -1,7 +1,7 @@
 package br.com.meiramovies.repository.specification;
 
-import br.com.meiramovies.model.dto.FilterMeiraFilmeRequest;
 import br.com.meiramovies.model.entity.MeiraFilme;
+import br.com.meiramovies.model.request.FilterMeiraFilmeRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;

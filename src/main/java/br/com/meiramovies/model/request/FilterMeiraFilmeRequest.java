@@ -1,4 +1,4 @@
-package br.com.meiramovies.model.dto;
+package br.com.meiramovies.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

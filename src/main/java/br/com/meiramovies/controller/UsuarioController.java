@@ -1,8 +1,8 @@
 package br.com.meiramovies.controller;
 
 import br.com.meiramovies.exceptions.NegocioException;
-import br.com.meiramovies.model.dto.LoginRequestDTO;
 import br.com.meiramovies.model.dto.UsuarioDto;
+import br.com.meiramovies.model.request.LoginRequest;
 import br.com.meiramovies.service.EmailService;
 import br.com.meiramovies.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class UsuarioController {
     }
 
     @PostMapping("login")
-    public UsuarioDto login(@RequestBody LoginRequestDTO requestDTO) throws NegocioException {
+    public UsuarioDto login(@RequestBody LoginRequest requestDTO) throws NegocioException {
         return usuarioService.logar(requestDTO);
     }
 

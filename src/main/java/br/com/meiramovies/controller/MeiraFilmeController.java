@@ -1,8 +1,8 @@
 package br.com.meiramovies.controller;
 
-import br.com.meiramovies.model.dto.FilterMeiraFilmeRequest;
 import br.com.meiramovies.model.dto.MeiraFilmeDto;
 import br.com.meiramovies.model.entity.MeiraFilme;
+import br.com.meiramovies.model.request.FilterMeiraFilmeRequest;
 import br.com.meiramovies.service.MeiraFilmeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +35,12 @@ public class MeiraFilmeController {
     @GetMapping("filtro")
     public List<MeiraFilme> buscarPorFiltro(FilterMeiraFilmeRequest filter) {
         return meiraFilmeService.buscarFilmesFiltro(filter);
+    }
+
+    @DeleteMapping("{id}")
+    public String deletarFilme(@PathVariable Integer id) {
+        meiraFilmeService.deletarFilme(id);
+        return "Filme excluído com sucesso!";
     }
 
 }
