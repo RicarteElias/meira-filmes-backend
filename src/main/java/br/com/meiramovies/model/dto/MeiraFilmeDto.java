@@ -1,7 +1,10 @@
 package br.com.meiramovies.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -9,7 +12,6 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class MeiraFilmeDto {
 
     private Integer id;
@@ -25,6 +27,5 @@ public class MeiraFilmeDto {
 
     @JsonAlias("backdrop_path")
     private String backdropPath;
-
 
 }
