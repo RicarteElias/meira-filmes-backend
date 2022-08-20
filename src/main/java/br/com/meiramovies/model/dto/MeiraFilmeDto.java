@@ -28,5 +28,4 @@ public class MeiraFilmeDto {
     @JsonAlias("backdrop_path")
     private String backdropPath;
 
-
 }
